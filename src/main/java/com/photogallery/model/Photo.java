@@ -5,9 +5,10 @@ import jakarta.persistence.*;
 @Entity
 public class Photo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    // Many Photos To One Gallery
     @ManyToOne
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
@@ -43,5 +44,11 @@ public class Photo {
 
     public void setGallery(Gallery gallery) {
         this.gallery = gallery;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Photo {" + "id=" + this.id + ", gallery name='" + this.gallery.getName() + '}';
     }
 }
