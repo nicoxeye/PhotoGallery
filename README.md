@@ -7,6 +7,13 @@
 | dependency management | 1.1.7 |
 | docker compose | 3.8 |
 
+# HELPFUL VIDEOS I USED:
+for spring security:
+
+    https://www.youtube.com/watch?v=nhsdPVXhbHo
+    
+    https://www.youtube.com/watch?v=RhIXP5tjHkk
+
 # DEV LOG ---
 STEPS
 - creating a docker container for mysql and connecting with the database in the app

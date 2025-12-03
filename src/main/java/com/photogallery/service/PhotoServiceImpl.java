@@ -1,4 +1,12 @@
 package com.photogallery.service;
 
-public class PhotoServiceImpl {
+import com.photogallery.repository.PhotoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PhotoServiceImpl implements PhotoService {
+
+    @Autowired
+    private PhotoRepository photoRepository;
 }

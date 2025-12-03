@@ -1,15 +1,32 @@
 package com.photogallery.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class PageController {
 
     @GetMapping("/")
     public String home() {
-        return "i work!";
+        return "index";
+    }
+
+    @GetMapping("/admin/")
+    public String homeAdmin() {
+        return "admin_index";
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            return "redirect:/"; //to index
+        }
+        return "login";
     }
 
 }
+

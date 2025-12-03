@@ -12,14 +12,16 @@ public class User {
     private Long id;
     private String login;
     private String password;
+    private Role role;
 
     public User() {
 
     }
 
-    public User(String login, String password) {
+    public User(String login, String password, Role role) {
         this.login = login;
         this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -40,6 +42,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

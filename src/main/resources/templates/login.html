@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<head>
+    <meta charset="UTF-8">
+    <title>Log In Page</title>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Log In Page</h1>
+
+    <form th:action="@{/login}" method="post">
+        <div class="border border-secondary p-3 rounded">
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" autofocus="autofocus" /> <br/>
+
+            <label for="password">Password</label>:
+            <input type="password" id="password" name="password" /> <br/>
+            <input type="submit" value="Login" />
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
