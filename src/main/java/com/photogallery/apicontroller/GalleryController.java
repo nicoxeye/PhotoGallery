@@ -1,8 +1,7 @@
-package com.photogallery.controller;
+package com.photogallery.apicontroller;
 
 import com.photogallery.model.Gallery;
 import com.photogallery.model.User;
-import com.photogallery.repository.UserRepository;
 import com.photogallery.service.GalleryService;
 import com.photogallery.service.UserService;
 import org.springframework.security.core.Authentication;

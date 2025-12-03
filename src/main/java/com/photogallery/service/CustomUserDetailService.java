@@ -1,5 +1,6 @@
 package com.photogallery.service;
 
+import com.photogallery.model.Role;
 import com.photogallery.model.User;
 import com.photogallery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

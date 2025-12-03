@@ -1,4 +1,4 @@
-package com.photogallery.controller;
+package com.photogallery.apicontroller;
 
 import com.photogallery.model.Photo;
 import com.photogallery.service.PhotoService;

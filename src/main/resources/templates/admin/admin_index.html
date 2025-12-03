@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
   <h1>Hello Admin</h1>
-  <p>Test if getting to this page works correctly</p>
-  <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"/>
-  </form>
+  <div class="container">
+      <a class="btn btn-outline-light btn-lg" href="/admin/users">Manage Users</a>
+      <a class="btn btn-outline-light btn-lg" href="/admin/galleries">Manage Galleries</a>
+      <form th:action="@{/logout}" method="post">
+          <input type="submit" value="Logout"/>
+      </form>
+  </div>
 </body>
 </html>

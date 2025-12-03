@@ -1,5 +1,6 @@
 package com.photogallery.repository;
 
+import com.photogallery.model.Role;
 import com.photogallery.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

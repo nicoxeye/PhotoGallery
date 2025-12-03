@@ -40,7 +40,7 @@ public class WebSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("login")
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/success", true) //there it redirects after checking the role of the user logging in
                         .permitAll()
                 )
                 .httpBasic(Customizer.withDefaults()) // for postman to log in easily using basic auth
