@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+</head>
+<body>
+<div class="container">
+
+    <h2 th:text="'Gallery of ' + ${user.login}"></h2>
+    <h3 th:text="${gallery.name}"></h3>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Preview</th>
+            <th>Name</th>
+        </tr>
+
+        <!-- looping over photos in gallery -->
+        <tr th:each="image : ${gallery.photos}">
+            <td>
+                <img th:src="@{/uploads/{img}(img=${image.path})}" class="img-responsive" style="max-width:200px;">
+            </td>
+            <td th:text="${image.name}"></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

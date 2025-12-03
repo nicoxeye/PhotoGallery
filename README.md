@@ -14,9 +14,18 @@ for spring security:
     
     https://www.youtube.com/watch?v=RhIXP5tjHkk
 
+for fetching data using thymeleaf:
+
+    https://www.youtube.com/watch?v=TLtksmnrSII
+
 # DEV LOG ---
 STEPS
-- creating a docker container for mysql and connecting with the database in the app
-- making a simplified diagram how the app relationships would look like
+1. creating a docker container + docker compose yml for mysql and connecting with the database in the app
+2. making a simplified diagram how the app relationships would look like
+
 <img width="913" height="491" alt="image" src="https://github.com/user-attachments/assets/dfaebc74-e5ac-4759-b69b-94ebbc44afe8" />
-- creating all basic classes and interfaces such as: models, services, repositories, controllers, dao, database (which acts as the loader of the database)
+
+3. creating all basic classes and interfaces such as: models, services, repositories, controllers, database (which acts as the loader of the database)
+4. setting up spring security that makes it available for the users in database to log in
+5. creating APIs + testing them in POSTMAN
+6. setting up the gallery page for existing users

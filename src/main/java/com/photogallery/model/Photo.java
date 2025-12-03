@@ -1,5 +1,6 @@
 package com.photogallery.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class Photo {
     // Many Photos To One Gallery
     @ManyToOne
     @JoinColumn(name = "gallery_id")
+    @JsonBackReference
     private Gallery gallery;
 
     public Photo() {
