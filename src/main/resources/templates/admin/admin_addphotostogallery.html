@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Photos To Gallery</title>
+</head>
+<body>
+<div class="container" id="container">
+
+  <h1>Gallery Creation</h1>
+  <form role="form" method="post" th:action="@{/admin/galleries/addphotos}" enctype="multipart/form-data">
+    <div class="form-group">
+      <!-- gallery select -->
+
+      <label for="gallery">Galleries</label>
+
+      <select class="form-control" id="gallery" name="galleryId" required="required">
+        <option th:each="gallery: ${galleries}"
+                th:value="${gallery.id}"
+                th:text="${gallery.name}">
+        </option>
+      </select>
+
+      <!-- photos select from computer and adds it uploads folder -->
+      <div class="form-group">
+        <input type="file" name="image" accept="image/*" class="form-control-file">
+      </div>
+
+    </div>
+    <button type="submit">Upload Image</button>
+  </form>
+
+</div>
+</body>
+</html>

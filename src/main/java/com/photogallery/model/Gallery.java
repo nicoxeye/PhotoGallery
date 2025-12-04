@@ -13,8 +13,8 @@ public class Gallery {
     private Long id;
     private String name;
 
-    // many galleries to one user i think,,
-    @ManyToOne
+    // one gallery to one user
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -1,6 +1,7 @@
 package com.photogallery.controller;
 
 import com.photogallery.model.Gallery;
+import com.photogallery.model.Photo;
 import com.photogallery.model.Role;
 import com.photogallery.model.User;
 import com.photogallery.service.GalleryService;
@@ -16,10 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PageController {
@@ -56,6 +61,9 @@ public class PageController {
     }
 
     // ADMIN PAGES ------
+
+    // users
+
     @GetMapping("/admin/")
     public String homeAdmin() {
         return "admin/admin_index";
@@ -88,7 +96,7 @@ public class PageController {
         return "redirect:/admin/users";
     }
 
-
+    // galleries
 
     @GetMapping("/admin/galleries")
     public String manageGalleries(Model model) {
@@ -115,6 +123,42 @@ public class PageController {
         gallery.setUser(user);
 
         galleryService.saveGallery(gallery);
+
+        return "redirect:/admin/galleries";
+    }
+
+    @GetMapping("/admin/galleries/addphotos")
+    public String addFormPhotos(Model model) {
+        List<Gallery> galleries = galleryService.getAllGalleries();
+        model.addAttribute("galleries", galleries);
+
+        return "admin/admin_addphotostogallery";
+    }
+
+    public static String UPLOAD_DIRECTORY = "uploads";
+
+    @PostMapping("/admin/galleries/addphotos")
+    public String addPhoto(@RequestParam Long galleryId, Model model, @RequestParam("image") MultipartFile file) throws IOException {
+
+        // getting the path to upload the photo to
+        Path uploadPath = Paths.get(UPLOAD_DIRECTORY);
+        // create if doesnt exist
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        String originalFilename = file.getOriginalFilename();
+        assert originalFilename != null;
+        Path filePath = uploadPath.resolve(originalFilename);
+        Files.write(filePath, file.getBytes());
+
+        // getting the chosen gallery
+        Gallery gallery = galleryService.getGalleryById(galleryId);
+
+        Photo photo = new Photo(originalFilename, "uploads/" + originalFilename, gallery);
+
+        // saving the photo to gallery uploads it to the database
+        galleryService.addPhotoToGallery(gallery, photo);
 
         return "redirect:/admin/galleries";
     }

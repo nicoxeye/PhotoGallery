@@ -42,8 +42,6 @@
     └── resources/
     │       ├── application.properties
     │       ├── static/
-    │       │   └── uploads/                      → static photos to use while loading user photos from database, in reality would be somewhere else (on a server/disk)
-    │       │       └── trees.jpg
     │       └── templates/
     │           ├── admin/                        → admin related pages, those with user role do not have access to them
     │           │   ├── admin_creategallery.html
@@ -54,9 +52,11 @@
     │           ├── index.html
     │           ├── login.html
     │           └── user_gallery.html
+    └── uploads/                         → photos to use while loading user photos in gallery from database, in reality would be somewhere else (on a server/disk)
+        └── trees.jpg
 </pre>
 
-# HELPFUL VIDEOS I USED:
+# HELPFUL VIDEOS & SITES I USED:
 for spring security:
 
     https://www.youtube.com/watch?v=nhsdPVXhbHo
@@ -67,6 +67,10 @@ for fetching data using thymeleaf:
 
     https://www.youtube.com/watch?v=TLtksmnrSII
 
+for photo upload:
+
+    https://www.baeldung.com/spring-boot-thymeleaf-image-upload
+
 # DEV LOG ---
 STEPS
 1. creating a docker container + docker compose yml for mysql and connecting with the database in the app
@@ -76,6 +80,6 @@ STEPS
 5. creating APIs + testing them in POSTMAN
 6. setting up the gallery page for existing users
 7. creation of users and galleries for existing users
-8. (TODO) adding photos to existing gallery
+8. adding photos to existing gallery
 9. (TODO) adding css to pages
 10. (TODO) better documentation with features, screenshots etc

@@ -1,11 +1,11 @@
 package com.photogallery.service;
 
 import com.photogallery.model.Gallery;
+import com.photogallery.model.Photo;
 import com.photogallery.model.User;
 import com.photogallery.repository.GalleryRepository;
-import jakarta.servlet.http.HttpServletResponse;
+import com.photogallery.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +15,8 @@ public class GalleryServiceImpl implements GalleryService {
 
     @Autowired
     private GalleryRepository galleryRepository;
+    @Autowired
+    private PhotoRepository photoRepository;
 
     public List<Gallery> getAllGalleries() {
         return galleryRepository.findAll();
@@ -40,6 +42,18 @@ public class GalleryServiceImpl implements GalleryService {
             System.out.println("Gallery already exists for user: " + gallery.getUser().getLogin());
         }
 
+    }
+
+    @Override
+    public void addPhotoToGallery(Gallery gallery, Photo photo) {
+        photoRepository.save(photo);
+        gallery.addPhoto(photo);
+        galleryRepository.save(gallery);
+    }
+
+    @Override
+    public Gallery getGalleryById(Long galleryId) {
+        return galleryRepository.findById(galleryId).orElseThrow();
     }
 
 }

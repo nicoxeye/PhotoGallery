@@ -20,7 +20,7 @@
         <!-- looping over photos in gallery -->
         <tr th:each="image : ${gallery.photos}">
             <td>
-                <img th:src="@{/uploads/{img}(img=${image.path})}" class="img-responsive" style="max-width:200px;">
+                <img th:src="${image.path}" class="img-responsive" style="max-width:200px;" alt="Image">
             </td>
             <td th:text="${image.name}"></td>
         </tr>

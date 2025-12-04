@@ -29,7 +29,7 @@ public class LoadData {
             userRepository.save(adminTemp);
 
             Gallery gallery = new Gallery("Gallery 1 JohnD", johnDoe);
-            Photo photo = new Photo("trees", "trees.jpg", gallery);
+            Photo photo = new Photo("trees", "uploads/trees.jpg", gallery);
 
             Gallery gallery2 = new Gallery("Gallery 2 JaneD", janeDoe);
 
