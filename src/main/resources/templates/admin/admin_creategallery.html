@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Creation</title>
+</head>
+<body>
+<div class="container" id="container">
+
+    <h1>Gallery Creation</h1>
+    <form role="form" method="post" th:action="@{/admin/galleries/create}" th:object="${gallery}">
+        <div class="form-group">
+            <!-- name and user-->
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required="required">
+
+            <label for="user">User</label>
+            <select class="form-control" id="user" name="userId" required="required">
+                <option th:each="user: ${users}"
+                        th:value="${user.id}"
+                        th:text="${user.login}">
+                </option>
+            </select>
+
+        </div>
+        <button type="submit">Create</button>
+    </form>
+
+</div>
+</body>
+</html>

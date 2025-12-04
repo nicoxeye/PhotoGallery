@@ -10,4 +10,5 @@ public interface GalleryService {
 
     public abstract Gallery getGalleryByUser(User user);
 
+    public abstract void saveGallery(Gallery gallery);
 }

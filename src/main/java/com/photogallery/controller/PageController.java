@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PageController {
@@ -93,6 +95,29 @@ public class PageController {
         return "admin/admin_galleries";
     }
 
+    @GetMapping("/admin/galleries/create")
+    public String createFormGallery(Model model) {
+        Gallery gallery = new Gallery();
+        model.addAttribute("gallery", gallery);
+
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+
+        return "admin/admin_creategallery";
+    }
+
+    @PostMapping("/admin/galleries/create")
+    public String createGallery(@ModelAttribute Gallery gallery, @ModelAttribute("userId") Long userId) {
+        System.out.println("Gallery name: " + gallery.getName());
+        System.out.println("User ID from form: " + userId);
+
+        User user = userService.getUserById(userId);
+        gallery.setUser(user);
+
+        galleryService.saveGallery(gallery);
+
+        return "redirect:/admin/galleries";
+    }
 
     // USER PAGES ------
     @GetMapping("/gallery")
