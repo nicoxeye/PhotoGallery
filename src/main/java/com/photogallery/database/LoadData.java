@@ -19,23 +19,28 @@ public class LoadData {
     CommandLineRunner initDatabase(UserRepository userRepository, GalleryRepository galleryRepository, PhotoRepository photoRepository, PasswordEncoder encoder) {
 
         return args -> {
-            User johnDoe = new User("JohnDoe", encoder.encode("1234"), Role.ROLE_USER);
-            userRepository.save(johnDoe);
+            User janeAusten = new User("JaneAusten", encoder.encode("1234"), Role.ROLE_USER);
+            userRepository.save(janeAusten);
 
-            User janeDoe = new User("JaneDoe", encoder.encode("4321"), Role.ROLE_USER);
-            userRepository.save(janeDoe);
+            User anneRice = new User("AnneRice", encoder.encode("1234"), Role.ROLE_USER);
+            userRepository.save(anneRice);
 
             User adminTemp = new User("admin", encoder.encode("999"), Role.ROLE_ADMIN);
             userRepository.save(adminTemp);
 
-            Gallery gallery = new Gallery("Gallery 1 JohnD", johnDoe);
-            Photo photo = new Photo("trees", "uploads/trees.jpg", gallery);
+            Gallery galleryJA = new Gallery("Jane Austen Nature", janeAusten);
+            Photo photo = new Photo("trees.jpg", "uploads/trees.jpg", galleryJA);
+            Photo photo2 = new Photo("sunflowers.jpg", "uploads/sunflowers.jpg", galleryJA);
 
-            Gallery gallery2 = new Gallery("Gallery 2 JaneD", janeDoe);
+            Gallery galleryAR = new Gallery("Anne Rice's Dog", anneRice);
+            Photo photo3 = new Photo("sillydog.jpg", "uploads/sillydog.jpg", galleryAR);
 
-            gallery.addPhoto(photo);
-            galleryRepository.save(gallery);
-            galleryRepository.save(gallery2);
+            galleryJA.addPhoto(photo);
+            galleryJA.addPhoto(photo2);
+            galleryAR.addPhoto(photo3);
+
+            galleryRepository.save(galleryJA);
+            galleryRepository.save(galleryAR);
         };
 
     }
